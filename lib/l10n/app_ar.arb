@@ -1,0 +1,20 @@
+{
+  "app_tittle": "قائمة المهام",
+  "edit_screen_title": "تعديل المهمه",
+  "settings": "الاعدادات",
+  "add_task_title": "اضافة مهمه جديده",
+  "task_title": "اسم المهمه",
+  "please_task_title": "رجاءاً ادخل اسم المهمه",
+  "task_description": "شرح المهمه",
+  "please_task_description": "رجاءاً ادخل شرح المهمه",
+  "select_time": "تحديد الوقت",
+  "add": "اضافة",
+  "task_added_successfully": "تمت اضافة المهمه بنجاح ",
+  "something_went_wrong": "حدث خطأ",
+  "delete": "مسح",
+  "items": "المهام",
+  "theme": "المظهر",
+  "dark": "داكن",
+  "light": "مضئ",
+  "language": "اللغة"
+}

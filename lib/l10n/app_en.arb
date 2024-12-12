@@ -1,0 +1,20 @@
+{
+  "app_tittle": "Todo List",
+  "edit_screen_title": "Edit Task",
+  "settings": "settings",
+  "add_task_title": "Add A New Task",
+  "task_title": "Task Title",
+  "please_task_title": "Please enter your task title",
+  "task_description": "Task Description",
+  "please_task_description": "Please enter your task description",
+  "select_time": "Select Time",
+  "add": "Add",
+  "task_added_successfully": "Task Added Successfully",
+  "something_went_wrong": "Something went wrong",
+  "delete": "delete",
+  "items": "items",
+  "theme": "Theme",
+  "dark": "Dark",
+  "light": "Light",
+  "language": "Language"
+}

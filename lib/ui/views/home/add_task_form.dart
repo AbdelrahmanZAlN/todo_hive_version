@@ -4,11 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:todo_final_project/providers/task_provider.dart';
 import 'package:todo_final_project/ui/dialog_utils.dart';
 import 'package:todo_final_project/ui/models/task.dart';
-
 import '../../../date_utils.dart';
 import '../../components/custom_elevated_button.dart';
 import '../../components/custom_text_form_field.dart';
-import '../../constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddTaskForm extends StatefulWidget {
   const AddTaskForm({super.key});
@@ -31,7 +30,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height * .125),
-            child: Text('Add A New Task',
+            child: Text(AppLocalizations.of(context)!.edit_screen_title,
                 style: Theme.of(context).textTheme.headlineMedium
             ),
           ),
@@ -57,20 +56,20 @@ class _AddTaskFormState extends State<AddTaskForm> {
           //   lines: 5,
           // ),
           CustomTextFormField(
-            label: "Enter your task title",
+            label: AppLocalizations.of(context)!.task_title,
             validator: (text) {
               if (text?.trim().isEmpty ?? true) {
-                return 'Please enter your task title';
+                return AppLocalizations.of(context)!.please_task_title;
               }
               return null;
             },
             onSaved: (text) => title = text, // Update title
           ),
           CustomTextFormField(
-            label: "Task description",
+            label: AppLocalizations.of(context)!.task_description,
             validator: (text) {
               if (text?.trim().isEmpty ?? true) {
-                return 'Please enter your task description';
+                return AppLocalizations.of(context)!.please_task_description;
               }
               return null;
             },
@@ -80,7 +79,8 @@ class _AddTaskFormState extends State<AddTaskForm> {
 
           SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
-          const Text('Select Time',
+          Text(
+            AppLocalizations.of(context)!.select_time,
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold
@@ -110,7 +110,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
             onPressed: (){
               addTask();
             },
-            name: 'Add',),
+            name: AppLocalizations.of(context)!.add,),
 
           // ElevatedButton(
           //   onPressed: (){
@@ -137,36 +137,6 @@ class _AddTaskFormState extends State<AddTaskForm> {
     );
 
   }
-  // void addTask ()async{
-  //   TaskProvider taskProvider=Provider.of<TaskProvider>(context, listen: false);
-  //   if(formKey.currentState!.validate()==true){
-  //     formKey.currentState!.save();
-  //
-  //     var taskModel= Task(
-  //       title: title!,
-  //       description: description!,
-  //       date: DateFormat('yyyy MMM dd').format(DateTime.now()),
-  //     );
-  //     DialogUtils.showToast(context, 'loading');
-  //
-  //     try {
-  //       taskProvider.addTask(taskModel);
-  //       taskProvider.fetchAllNotes();
-  //       DialogUtils.showToast(context, 'Added successfully');
-  //       debugPrint(taskModel.title);
-  //
-  //     } catch(e){
-  //       debugPrint('$e');
-  //       DialogUtils.showToast(context, 'something went wrong');
-  //     }
-  //   }
-  //   else {
-  //     autoValidateMode=AutovalidateMode.always;
-  //     setState(() {
-  //
-  //     });
-  //   }
-  // }
 
   void addTask() async {
     if (formKey.currentState?.validate() ?? false) {
@@ -180,10 +150,10 @@ class _AddTaskFormState extends State<AddTaskForm> {
       final taskProvider = Provider.of<TaskProvider>(context, listen: false);
       try {
         await taskProvider.addTask(taskModel);
-        DialogUtils.showToast(context, 'Task added successfully');
+        DialogUtils.showToast(context, AppLocalizations.of(context)!.task_added_successfully);
         Navigator.pop(context); // Close bottom sheet
       } catch (e) {
-        DialogUtils.showToast(context, 'Something went wrong');
+        DialogUtils.showToast(context, AppLocalizations.of(context)!.something_went_wrong);
         debugPrint('$e');
       }
     } else {

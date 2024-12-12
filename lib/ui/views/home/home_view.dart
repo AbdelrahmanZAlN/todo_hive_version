@@ -4,6 +4,7 @@ import '../../../providers/task_provider.dart';
 import 'add_task_bottom_sheet.dart';
 import 'settings/settings_tab.dart';
 import 'todos_list/todos_list_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       appBar: AppBar(
         centerTitle: true,
-        title:  const Text("To Do List"),
+        title:  Text(AppLocalizations.of(context)!.app_tittle,),
 
         backgroundColor:  Colors.blue,
         // titleSpacing: 60,
@@ -63,13 +64,13 @@ class _HomeScreenState extends State<HomeScreen> {
               debugPrint('$selectedIndex');
             });
           },
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              label: "items",
+              label: AppLocalizations.of(context)!.items,
               icon: Icon(Icons.list),
             ),
             BottomNavigationBarItem(
-              label: "settings",
+              label: AppLocalizations.of(context)!.settings,
               icon: Icon(Icons.settings),
             ),
           ],
