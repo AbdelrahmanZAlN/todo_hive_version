@@ -3,14 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../providers/settings_provider.dart';
 
-class ThemeButtonSheet extends StatelessWidget {
-  const ThemeButtonSheet({super.key});
+class ThemeBottomSheet extends StatelessWidget {
+  const ThemeBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
     var provider= Provider.of<SettingsProvider>(context);
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -41,11 +41,11 @@ class ThemeButtonSheet extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(mode,
-          style: Theme.of(context).textTheme.bodyMedium
-              ?.copyWith(color: Theme.of(context).dividerColor),
+          style: Theme.of(context).textTheme.bodySmall
+              ?.copyWith(color: Theme.of(context).focusColor),
 
         ),
-        Icon(Icons.check,color: Theme.of(context).dividerColor,)
+        Icon(Icons.check,color: Theme.of(context).focusColor,)
       ],
     );
   }

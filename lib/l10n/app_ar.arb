@@ -12,9 +12,11 @@
   "task_added_successfully": "تمت اضافة المهمه بنجاح ",
   "something_went_wrong": "حدث خطأ",
   "delete": "مسح",
+  "task_updated_successfully": "تم تعديل المهمه بنجاح",
+  "no_scheduled_tasks": "لا توجد مهام مجدوله",
   "items": "المهام",
   "theme": "المظهر",
-  "dark": "داكن",
+  "dark": "ليلي",
   "light": "مضئ",
   "language": "اللغة"
 }

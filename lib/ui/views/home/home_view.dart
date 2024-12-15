@@ -21,27 +21,24 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<TaskProvider>(context, listen: false).fetchAllNotes();
+      Provider.of<TaskProvider>(context, listen: false).fetchAllTasks();
     });
   }
 
 
   List<Widget> tabs=[
-    TodosListTab(),
-    SettingsTab(),
+    const TodosListTab(),
+    const SettingsTab(),
   ];
  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
 
       appBar: AppBar(
         centerTitle: true,
         title:  Text(AppLocalizations.of(context)!.app_tittle,),
-
-        backgroundColor:  Colors.blue,
         // titleSpacing: 60,
         toolbarHeight: 60,
         toolbarTextStyle:  const TextStyle(
@@ -67,11 +64,11 @@ class _HomeScreenState extends State<HomeScreen> {
           items: [
             BottomNavigationBarItem(
               label: AppLocalizations.of(context)!.items,
-              icon: Icon(Icons.list),
+              icon: const Icon(Icons.list),
             ),
             BottomNavigationBarItem(
               label: AppLocalizations.of(context)!.settings,
-              icon: Icon(Icons.settings),
+              icon: const Icon(Icons.settings),
             ),
           ],
 
@@ -79,7 +76,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
         shape: const StadiumBorder(
             side: BorderSide(
               color: Colors.white,
@@ -100,7 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
  void showAddTaskSheet(){
    showModalBottomSheet(
-     context: context, builder: (BuildContext context) => const AddTaskBottomSheet(),
+     context: context,
+     builder: (BuildContext context) => const AddTaskBottomSheet(),
      isScrollControlled: true,
      shape:const RoundedRectangleBorder(
        borderRadius: BorderRadius.vertical(top: Radius.circular(25)),

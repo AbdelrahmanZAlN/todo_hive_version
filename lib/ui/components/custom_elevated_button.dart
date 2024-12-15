@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo_final_project/ui/constants.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final Function() onPressed;
@@ -17,7 +16,7 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
 
       style: ButtonStyle(
-        backgroundColor: const WidgetStatePropertyAll(kPrimarySwatch),
+        backgroundColor: WidgetStatePropertyAll(Theme.of(context).focusColor),
         padding:const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 10)),
         shape:  WidgetStatePropertyAll<RoundedRectangleBorder>(
           RoundedRectangleBorder(

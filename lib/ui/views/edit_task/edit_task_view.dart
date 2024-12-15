@@ -5,6 +5,7 @@ import 'package:todo_final_project/ui/models/task.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_final_project/providers/task_provider.dart';
 import 'package:todo_final_project/ui/views/edit_task/edit_task_view_body.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditTaskView extends StatefulWidget {
   static const String routeName = 'EditTaskView';
@@ -24,16 +25,8 @@ class _EditTaskViewState extends State<EditTaskView> {
     taskModel = ModalRoute.of(context)!.settings.arguments as Task;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Edit Task"),
-        backgroundColor: Colors.blue,
-        toolbarHeight: 60,
-        toolbarTextStyle: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 24,
-        ),
+        title: Text(AppLocalizations.of(context)!.edit_screen_title),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -61,9 +54,9 @@ class _EditTaskViewState extends State<EditTaskView> {
 
   void updateTask() {
 
-    Provider.of<TaskProvider>(context, listen: false).fetchAllNotes();
+    Provider.of<TaskProvider>(context, listen: false).fetchAllTasks();
 
-    DialogUtils.showToast(context, 'Task updated successfully');
+    DialogUtils.showToast(context, AppLocalizations.of(context)!.task_updated_successfully);
 
     Navigator.pop(context);
   }

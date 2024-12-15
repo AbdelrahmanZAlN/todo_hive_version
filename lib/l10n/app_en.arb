@@ -12,6 +12,8 @@
   "task_added_successfully": "Task Added Successfully",
   "something_went_wrong": "Something went wrong",
   "delete": "delete",
+  "task_updated_successfully": "Task updated successfully",
+  "no_scheduled_tasks": "No tasks scheduled",
   "items": "items",
   "theme": "Theme",
   "dark": "Dark",

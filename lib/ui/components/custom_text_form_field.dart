@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String label;
@@ -30,28 +29,31 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return TextFormField(
-      cursorColor: kPrimarySwatch,
+      cursorColor: Theme.of(context).focusColor,
       validator: validator,
       onSaved: onSaved,
       onChanged: onChange,
       minLines: lines,
       maxLines: lines,
       controller: controller,
+      style:Theme.of(context).textTheme.bodyMedium ,
       decoration: InputDecoration(
+
         floatingLabelBehavior:
         hint!=null?
         FloatingLabelBehavior.always:
-          FloatingLabelBehavior.auto,
+        FloatingLabelBehavior.auto,
         labelText: label,
         //contentPadding: const EdgeInsets.all(20),
-        labelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(),
-        floatingLabelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kPrimarySwatch),
+        labelStyle: Theme.of(context).textTheme.bodyMedium,
+        floatingLabelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).focusColor,
+        ),
         hintText: hint,
-
         hintStyle:Theme.of(context).textTheme.bodyMedium,
-        focusedBorder: const UnderlineInputBorder(
+        focusedBorder:  UnderlineInputBorder(
           borderSide: BorderSide(
-            color: kPrimarySwatch
+            color: Theme.of(context).focusColor
           )
         )
 

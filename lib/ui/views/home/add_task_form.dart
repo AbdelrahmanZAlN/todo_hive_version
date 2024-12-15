@@ -30,7 +30,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height * .125),
-            child: Text(AppLocalizations.of(context)!.edit_screen_title,
+            child: Text(AppLocalizations.of(context)!.add_task_title,
                 style: Theme.of(context).textTheme.headlineMedium
             ),
           ),
@@ -81,7 +81,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
 
           Text(
             AppLocalizations.of(context)!.select_time,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold
             ),),
@@ -169,7 +169,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
     var date= await showDatePicker(context: context,
       initialDate: selectedDate,
       firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(Duration(days: 365)),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     );
     if(date == null) return;
 

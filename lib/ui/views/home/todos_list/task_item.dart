@@ -24,7 +24,8 @@ class _TaskItemState extends State<TaskItem> {
       margin: const EdgeInsets.all(12),
 
       decoration:BoxDecoration(
-          borderRadius: BorderRadius.circular(18)
+          borderRadius: BorderRadius.circular(18),
+        color: Theme.of(context).primaryColor,
       ),
       child: Slidable(
         startActionPane: ActionPane(
@@ -49,7 +50,7 @@ class _TaskItemState extends State<TaskItem> {
           },
           child: Container(
             decoration:BoxDecoration(
-                color: Colors.white,
+                color:Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(18)
             ),
 
@@ -63,7 +64,7 @@ class _TaskItemState extends State<TaskItem> {
                   height: 80,
                   width: 8,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Theme.of(context).focusColor,
                     borderRadius: BorderRadius.circular(12)
                   ),
                 ),
@@ -75,8 +76,8 @@ class _TaskItemState extends State<TaskItem> {
                       width: 280,
                       child: Text(widget.task.title,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          color: Colors.blue,
+                        style: TextStyle(
+                          color: Theme.of(context).focusColor,
                           fontSize: 18,
                           fontWeight: FontWeight.w500
                         ),
@@ -101,7 +102,7 @@ class _TaskItemState extends State<TaskItem> {
                   height: 50,
                   width: 75,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Theme.of(context).focusColor,
                       borderRadius: BorderRadius.circular(12)
                   ),
                   child: const Image(image: AssetImage("assets/images/check.png"),
@@ -124,7 +125,7 @@ class _TaskItemState extends State<TaskItem> {
       negAction: ()async{
       await widget.task.delete();
       DialogUtils.showToast(context, 'Task deleted successfully');
-      Provider.of<TaskProvider>(context,listen: false).fetchAllNotes();
+      Provider.of<TaskProvider>(context,listen: false).fetchAllTasks();
       },
       posActionName: "Cancel",
     );

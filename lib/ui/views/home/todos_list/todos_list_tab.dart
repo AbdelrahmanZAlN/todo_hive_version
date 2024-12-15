@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:todo_final_project/providers/task_provider.dart';
+import '../../../../providers/settings_provider.dart';
 import 'task_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class TodosListTab extends StatefulWidget {
   const TodosListTab({super.key});
@@ -33,6 +35,7 @@ class _TodosListTabState extends State<TodosListTab> {
           selectedDayPredicate: (day) {
             return isSameDay(selectedDate, day);
           },
+          locale: Provider.of<SettingsProvider>(context).languageCode,
           onDaySelected: (selectedDay, focusedDay) {
             setState(() {
               selectedDate = selectedDay;
@@ -42,10 +45,10 @@ class _TodosListTabState extends State<TodosListTab> {
         ),
         Expanded(
           child: tasksForSelectedDate.isEmpty ?
-          const Center(
+          Center(
             child: Text(
-              "No tasks scheduled",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              AppLocalizations.of(context)!.no_scheduled_tasks,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
             ),
           ) :
           ListView.builder(

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../providers/settings_provider.dart';
 
-class LanguageButtonSheet extends StatelessWidget {
-  const LanguageButtonSheet({super.key});
+class LanguageBottomSheet extends StatelessWidget {
+  const LanguageBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
     var provider= Provider.of<SettingsProvider>(context);
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -42,11 +42,11 @@ class LanguageButtonSheet extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(mode,
-          style: Theme.of(context).textTheme.bodyMedium
-              ?.copyWith(color: Theme.of(context).dividerColor),
-
+          style: Theme.of(context).textTheme.bodySmall!.copyWith(
+            color: Theme.of(context).focusColor,
+          )
         ),
-        Icon(Icons.check,color: Theme.of(context).dividerColor,)
+        Icon(Icons.check,color: Theme.of(context).focusColor,)
       ],
     );
   }

@@ -7,7 +7,7 @@ class TaskProvider extends ChangeNotifier{
 
   List<Task> tasks = [];
 
-  void fetchAllNotes() {
+  void fetchAllTasks() {
   final notesBox = Hive.box<Task>(kTasksBox);
   tasks = notesBox.values.toList();
   notifyListeners();
@@ -16,8 +16,14 @@ class TaskProvider extends ChangeNotifier{
   Future<void> addTask(Task task) async {
   final notesBox = Hive.box<Task>(kTasksBox);
   await notesBox.add(task);
-  tasks.add(task); // Update local list
-  notifyListeners(); // Notify listeners of the change
+  tasks.add(task);
+  notifyListeners();
+  }
+
+  Future<void> deleteTask(Task task) async {
+  final notesBox = Hive.box<Task>(kTasksBox);
+  await notesBox.delete(task);
+  notifyListeners();
   }
 
 

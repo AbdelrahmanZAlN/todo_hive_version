@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:todo_final_project/ui/constants.dart';
 
 class DialogUtils{
 
@@ -14,8 +13,8 @@ class DialogUtils{
     List<Widget> actions=[];
     if(posActionName!=null){
       actions.add(TextButton(
-          style: const ButtonStyle(
-              foregroundColor: WidgetStatePropertyAll(kPrimarySwatch)
+          style: ButtonStyle(
+              foregroundColor: WidgetStatePropertyAll(Theme.of(context).focusColor)
           ),
           onPressed:(){
             hideDialog(context);
@@ -25,8 +24,8 @@ class DialogUtils{
     }
     if(negActionName!=null){
       actions.add(TextButton(
-        style: const ButtonStyle(
-          foregroundColor: WidgetStatePropertyAll(kPrimarySwatch)
+        style: ButtonStyle(
+          foregroundColor: WidgetStatePropertyAll(Theme.of(context).focusColor)
         ),
           onPressed:(){
         hideDialog(context);
@@ -39,7 +38,7 @@ class DialogUtils{
           return AlertDialog(
             contentPadding:const EdgeInsets.all(30),
             content: Text(message,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.black),
             ),
             actions: actions,
 

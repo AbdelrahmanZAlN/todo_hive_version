@@ -42,7 +42,7 @@ class SettingsTab extends StatelessWidget {
                 provider.mode=='Dark'?
                   AppLocalizations.of(context)!.dark:
                   AppLocalizations.of(context)!.light,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black),
               ),
             ),
           ),
@@ -71,7 +71,7 @@ class SettingsTab extends StatelessWidget {
                 provider.languageCode=='en'?
                 'English':'العربيه'
                 ,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black),
               ),
             ),
           )
@@ -81,13 +81,14 @@ class SettingsTab extends StatelessWidget {
     );
   }
   void showThemeBottomSheet(BuildContext context){
-    showBottomSheet(context: context,
-        builder: (context) => const ThemeButtonSheet()
+    showModalBottomSheet(
+        context: context,
+        builder: (context) => const ThemeBottomSheet()
     );
   }
   void showLanguageBottomSheet(BuildContext context){
-    showBottomSheet(context: context,
-        builder: (context) => const LanguageButtonSheet()
+    showModalBottomSheet(context: context,
+        builder: (context) => const LanguageBottomSheet()
     );
   }
 }
