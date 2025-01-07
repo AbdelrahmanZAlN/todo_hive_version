@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_final_project/providers/task_provider.dart';
+import 'package:todo_final_project/services/local/cache_helper.dart';
 import 'package:todo_final_project/ui/constants.dart';
 import 'package:todo_final_project/ui/my_theme_data.dart';
 import 'package:todo_final_project/ui/views/edit_task/edit_task_view.dart';
@@ -12,18 +13,19 @@ import 'providers/settings_provider.dart';
 import 'ui/models/task.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(TaskAdapter());
   await Hive.openBox<Task>(kTasksBox);
+  await CacheHelper.init();
 
+  bool isDark = CacheHelper.getBoolean(key: 'isDark'); // Default handled here
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => TaskProvider()),
-        ChangeNotifierProvider(create: (context) => SettingsProvider()),
+        ChangeNotifierProvider(create: (context) => SettingsProvider()..changeAppMode(fromShared: isDark)),
       ],
       child: const MyApp(),
     ),
@@ -38,7 +40,6 @@ class MyApp extends StatelessWidget {
     var provider = Provider.of<SettingsProvider>(context);
 
     return MaterialApp(
-
       title: "Todo",
       debugShowCheckedModeBanner: false,
       theme: MyThemeData.lightTheme,
